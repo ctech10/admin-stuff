@@ -1,0 +1,15 @@
+127.0.0.1	localhost
+127.0.1.1	karaoke-server
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+10.0.0.139	saloniki
+10.0.0.148	rio
+10.0.0.145	tokio
+10.0.0.147  london	
+10.0.0.149   newyork 

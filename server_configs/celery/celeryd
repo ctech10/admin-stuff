@@ -1,0 +1,26 @@
+CELERYD_CHDIR="/home/ubuntu/vhosts/karaoke_manager"
+#CELERYD_NODES="w1 w2 w3"
+PYTHON="/usr/bin/python"
+CELERYD_SCRIPT="$CELERYD_CHDIR/manage.py"
+CELERYD_MULTI="$PYTHON $CELERYD_SCRIPT celeryd_multi"
+#CELERYD="$PYTHON $CELERYD_SCRIPT celeryd_multi"
+CELERYD="$PYTHON $CELERYD_SCRIPT celeryd"
+CELERYCTL="$PYTHON $CELERYD_SCRIPT celeryctl"
+ 
+CELERYD_PID_FILE=/var/run/celeryd.pid
+ 
+#--logifle=/dev/null because we do logging via syslog
+CELERYD_OPTS="--pidfile=$CELERYD_PID_FILE --logfile=/dev/null -c 8 -E -B -P eventlet"
+CELERY_CONFIG_MODULE="celeryconfig"
+ 
+export DJANGO_SETTINGS_MODULE="karaoke_manager.settings"
+
+
+CELERYBEAT="$PYTHON $CELERYBEAT_CHDIR/manage.py celerybeat"
+CELERYBEAT_OPTS="--schedule=/var/run/celerybeat-schedule"
+# Log level. Can be one of DEBUG, INFO, WARNING, ERROR or CRITICAL.
+#CELERYBEAT_LOG_LEVEL="DEBUG"
+
+# Log file locations
+CELERYBEAT_LOGFILE="/var/log/celery/celerybeat.log"
+CELERYBEAT_PIDFILE="/var/run/celerybeat.pid"

@@ -1,0 +1,34 @@
+# /etc/exports: the access control list for filesystems which may be exported
+#		to NFS clients.  See exports(5).
+#
+# Example for NFSv2 and NFSv3:
+# /srv/homes       hostname1(rw,sync,no_subtree_check) hostname2(ro,sync,no_subtree_check)
+#
+# Example for NFSv4:
+# /srv/nfs4        gss/krb5i(rw,sync,fsid=0,crossmnt,no_subtree_check)
+# /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)
+#
+
+#/home/ubuntu/nfs-share/divxk           10.10.1.106(rw,sync,no_root_squash,no_subtree_check)
+#/var/nfs        10.10.1.106((rw,sync,no_subtree_check)
+#/home/ubuntu/nfs-share/divxk   10.10.1.0/24(rw,no_root_squash,async, subtree_check)
+#/home/ubuntu/nfs-share/divxk   10.10.1.0/24(rw,sync,no_subtree_check)
+
+#/home/ubuntu/nfs-share/   10.10.1.102(rw,sync,no_subtree_check)
+#/home/ubuntu/nfs-share/divxk   10.10.1.102(rw,sync,no_subtree_check)
+#/home/ubuntu/nfs-share/divxk  10.10.1.0/24(ro,async,no_wdelay,no_root_squash,no_subtree_check,insecure,anonuid=0,anongid=0)
+#/home/ubuntu/nfs-share/divxs  10.10.1.0/24(ro,async,no_wdelay,no_root_squash,no_subtree_check,insecure,anonuid=0,anongid=0)
+#/home/ubuntu/nfs-share/zengl  10.10.1.0/24(ro,async,no_wdelay,no_root_squash,no_subtree_check,insecure,anonuid=0,anongid=0)
+
+/home/ubuntu/shares  10.0.0.0/24(ro,async,no_wdelay,root_squash,subtree_check,insecure)
+#/home/ubuntu/shares  10.10.1.0/24(ro,async,no_wdelay,root_squash,subtree_check,insecure)
+#/home/ubuntu/heb1  192.168.2.0/24(ro,async,no_wdelay,all_squash,no_subtree_check,insecure)
+#/home/ubuntu/nfs-share/zengl  192.168.2.0/24(ro,async,no_wdelay,all_squash,no_subtree_check,insecure)
+#/export/engl  192.168.2.0/24(ro,async,no_wdelay,all_squash,no_subtree_check,insecure)
+#/export/videos  192.168.2.0/24(ro,async,no_wdelay,all_squash,no_subtree_check,insecure)
+#/export/videos2  192.168.2.0/24(ro,async,no_wdelay,all_squash,no_subtree_check,insecure)
+
+#/home/ubuntu/Desktop/Movies  10.10.1.0/24(rw,async,no_wdelay,no_root_squash,subtree_check,insecure,anonuid=0,anongid=0) 
+
+
+/home/ubuntu/vhosts/uploads  10.0.0.0/24(ro,async,no_wdelay,root_squash,subtree_check,insecure)

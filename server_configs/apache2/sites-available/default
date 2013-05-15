@@ -1,0 +1,68 @@
+<VirtualHost *:80>
+	ServerName karaoke-manager.local
+        ServerAlias karaoke-admin.dyndns.org 
+		
+	WSGIScriptAlias / /home/ubuntu/vhosts/karaoke_manager/karaoke_manager/wsgi.py
+	Alias /static/ /home/ubuntu/vhosts/karaoke_manager/static/
+	<Directory /home/ubuntu/vhosts/karaoke_manager/karaoke_manager>
+		<Files wsgi.py>
+			Order deny,allow
+			Allow from all
+		</Files>
+	</Directory>
+
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Headers: X-Requested-With
+        CustomLog /var/log/apache2/karaoke-manager.access.log common
+        ErrorLog /var/log/apache2/karaoke-manager.local.error.log
+	#AliasMatch ^(.*\.)(js|css|json|html|png|jpg|gif|ico|fav)$ /home/ubuntu/vhosts/app/build/KaraokeNew230313/testing$1$2
+	AliasMatch ^(.*\.)(js|css|json|html|png|jpg|gif|ico|fav)$ /home/ubuntu/vhosts/app/build/KaraokeNew070513/testing$1$2
+</VirtualHost>
+
+
+
+
+<VirtualHost *:8080>
+        ServerName karaoke-manager.local
+        ServerAlias karaoke-admin.dyndns.org
+
+        WSGIScriptAlias / /home/ubuntu/vhosts/karaoke_manager/karaoke_manager/wsgi.py
+        Alias /static/ /home/ubuntu/vhosts/karaoke_manager/static/
+        <Directory /home/ubuntu/vhosts/karaoke_manager/karaoke_manager>
+                <Files wsgi.py>
+                        Order deny,allow
+                        Allow from all
+                </Files>
+        </Directory>
+
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Headers: X-Requested-With
+        CustomLog /var/log/apache2/karaoke-manager.access.log common
+        ErrorLog /var/log/apache2/karaoke-manager.local.error.log
+        #AliasMatch ^(.*\.)(js|css|json|html|png|jpg|gif|ico|fav)$ /home/ubuntu/vhosts/app/build/KaraokeNew230313/testing$1$2
+        AliasMatch ^(.*\.)(js|css|json|html|png|jpg|gif|ico|fav)$ /home/ubuntu/vhosts/app/build/KaraokeNew300413/testing$1$2
+</VirtualHost>
+
+
+<VirtualHost *:80>
+ServerName karaoke-server.local
+      DocumentRoot  "/home/ubuntu/vhosts/karaoke-server/"
+<Directory /home/ubuntu/vhosts/karaoke-server/>
+    Order Deny,Allow
+    Allow from all
+</Directory>
+
+	CustomLog /var/log/apache2/karaoke-server.access.log common
+	ErrorLog /var/log/apache2/karaoke-server.local.error.log
+	DirectoryIndex index.html app.html
+	Options -Indexes
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Headers: X-Requested-With
+</VirtualHost>
+
+<VirtualHost *:80>
+        ServerName  webalizer.local
+ 
+        DirectoryIndex index.html
+        DocumentRoot /var/www/webalizer/
+</VirtualHost>
