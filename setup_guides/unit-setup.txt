@@ -1,0 +1,42 @@
+1) install ubuntu 12.04.2 alternate [user:xbmc, pass:xbmc]
+2) install XBMC FRODO
+    [
+        sudo add-apt-repository ppa:team-xbmc/ppa
+        sudo apt-get update
+        sudo apt-get install xbmc
+    ]
+
+3) install openssh-server
+    sudo apt-get install openssh-server
+
+4) update /etc/hosts : 10.0.0.141 karaoke-manager.local 
+
+5) set GRUB_TIMEOUT to 0
+    sudo nano /etc/default/grub
+    >>> GRUB_TIMEOUT=0
+    sudo update-grub
+
+5) get videodb.xml  
+        mkdir -p ~/xbmc_stuff/xbmc_lib
+        cd ~/xbmc_stuff/xbmc_lib
+        wget karaoke-manager.local/videodb.xml
+
+
+
+//in case the unit already installed and we need just update the library - make steps begins with "a":
+    a1) disable nfs share [sudo service nfs-kernel-server stop]
+    a2) clean the library
+    a3) enable nfs share [sudo service nfs-kernel-server start]
+
+6) import xbmc library
+
+
+7) XBMC settings:
+    *video-output : 1920x1080
+    *screensaver : 60min
+    *fonts : arial based
+    *webserver: enabled, user: empty, password: empty
+    
+    
+8) set master volume to max via alsamixer
+    $ alsamixer
